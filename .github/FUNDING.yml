@@ -1,0 +1,10 @@
+# These are supported funding model platforms
+
+tidelift:         #"pypi/mt4pycon"
+github: eabase
+patreon:          # Replace with a single Patreon username
+open_collective:  #mt4pycon
+ko_fi:            # Replace with a single Ko-fi username
+community_bridge: # Replace with a single Community Bridge project-name e.g., cloud-foundry
+custom:           # https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=xxxxxxxxx
+
