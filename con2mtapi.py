@@ -106,7 +106,9 @@ import getopt
 # For MT4 installs
 #--------------------------------------
 # C:\Program Files (x86)\MtApi
-sys.path.append(r"C:\Program Files\MtApi")
+#sys.path.append(r"C:\Program Files\MtApi")
+#sys.path.append(r"C:\Program Files (x86)\MtApi")
+sys.path.append(r".\libs")
 asm = clr.AddReference('MtApi')
 import MtApi as mt
 

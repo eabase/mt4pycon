@@ -13,14 +13,14 @@
 
 
 The **`mt4pycon`** repo is a collection of Python3 code used to interface with MT4 and MT5 
-terminals via 3rd party API's. As of today there is only one script available, but will 
+terminals via 3rd party API's. As of today there is only 2 scripts available, but will 
 soon contain several other examples for simple indicators, data scrapers/analyzers to 
 AI/ML automated trading bots.
 
 
 ---
 
-**`con2mtapi`**
+**`con2mtapi.py`**
 
 This is a simple *Python3* CLI client that is using the MT4 bridge API 
 ([mtapi](https://github.com/vdemydiuk/mtapi/)) to connect to a MT4 Terminal which 
@@ -30,6 +30,12 @@ for a specified symbol and timeframe. This particular script is using the MQL bu
 `CopyRates` and `iBars()` functions for receiving the candle data.
 
 
+**`liveTicks.py`**
+
+A very rudimentary data feed that is continusly *polling* the MQL `SymbolInfoTick(sym)` 
+funtion, to display *Time, Bid, Ask* and *Spread* (in points), for a given symbol.
+This should probably be rewritten using a threaded listener...
+
 Example Output:
 
 <sub>Using symbolic TF and normal tabulated output.</sub>  
@@ -37,6 +43,9 @@ Example Output:
 
 <sub>Using numerical TF and CSV output.</sub>  
 ![Full](./docs/image2.png)
+
+<sub>Live Tick stream with Spread...</sub>  
+![Full](./docs/image3.png)
 
 ---
 
@@ -107,6 +116,7 @@ As always, any small crypto donation is an inspitring incentive to make things h
 Python packages: 
 
 * [pythonnet](https://github.com/pythonnet/pythonnet) - `Python.NET` for the .NET *Common Language Runtime* (CLR)
+* [pyreadline](https://github.com/pyreadline/pyreadline) - [Not Required] *"You don't wanna develop without it!"*
 
 and what you already have: 
 * [MT4](https://github.com/rosasurfer/mt4-mql) - Latest (unbranded) MT4 and MetaEditor4 downloads
@@ -239,8 +249,8 @@ If you want to compile your own MtApi libraries, please check the original
 *mtapi* github repo for detailed compilation instructions.
 
 In summary, for modifying the EA, you would need to:  
-(a) Copy the `MtApi.mq4` file into the `../MQL4/Experts/` folder  
-(b) copy the following MQL Library files into the `../MQL4/Include/` folder:  
+**(a)** Copy the `MtApi.mq4` file into the `../MQL4/Experts/` folder.  
+**(b)** Copy the following MQL Library files into the `../MQL4/Include/` folder:  
 
 ```bash
 hash.mqh
@@ -248,7 +258,7 @@ json.mqh
 mql4-auth.mqh
 ```
 
-(c) Recompile `MtAPi.mq4` in *MetaEditor4*.
+**(c)** Recompile `MtApi.mq4` in *MetaEditor4*.
 
 
 ---
@@ -351,15 +361,17 @@ C:\Users\<username>\AppData\Roaming\MetaQuotes\Terminal\<unique-hash>\MQL4\Exper
 
 #### Recommeded Similar Tools:
 
-`TBA`
+* [dwx-zeromq-connector](https://github.com/darwinex/dwx-zeromq-connector) (*ZeroMQ-enabled MetaTrader Bridge EA*)
+* [mql4-lib](https://github.com/dingmaotu/mql4-lib) (*MQL4/5 Foundation Library*)
+* [mql-zmq](https://github.com/dingmaotu/mql-zmq) (*ZMQ binding for the MQL*)
 
 
 #### Known Bugs and Warnings
 
-* When running the script for the *first* time on a certain symbol and timeframe, the 
+:negative_squared_cross_mark: When running the script for the *first* time on a certain symbol and timeframe, the 
 candle data will not be available in the MT4 terminal buffer, so the script will fail. 
-Just run it again and MT4 will most likely have already downloaded the new data. I have 
-not been able to resolve this issue. 
+Just run it again and MT4 will most likely have already downloaded the new data. A bug report 
+has been filed in this [issue](#4). 
 
 
 #### ToDo / Help Needed
@@ -372,24 +384,14 @@ Feel free to post issues and PR's related to this tool.
 Feel free to fork, break, fix and contribute. Enjoy!
 
 
-#### Donation
+#### Donations
 
 Almost everything I do is Free and Open Source Software (FOSS). 
 This means that I do not receive any income on any of my projects. 
 So if you find any of my projects or code, cool & useful, please 
 consider making a small donation to any of my crypto accounts.
 
-<details><summary>Adresses</summary>
-
-| Symbol | Name | Address |
-|:--------:|:--------:|:--------|
-| BTC | Bitcoin  | `bc1qkcyxnerc2sa8xn8d30wkgfqy64jhcxxzf0xv05` |
-| ZEC | Zcash    | `t1aDszWfkHcSR5yjYrpjYLxj44Lfw7g9GDn` |
-| XMR | Monero   | `43ACVrQMQ23bh99S7ohJ4cbDA7mVXwUcYRNjyVkr4t3bgqikfpvQu9i4aBeu7vmzCKJek3pkidEFMYEZ6fJpb6Y6HgPAC5m` |
-| ETH | Ethereum | `0x53266f143193e08B91bF943a694f8F9D9435163B` |
-| LTC | Litecoin | `LW7Eu5omvBPRA1sXrKDtemVBrMYzFdwRAF` |
-
-</details>
+See my [profile](https://github.com/eabase) page for Crypto Adresses.
 
 
 #### Additional Badges

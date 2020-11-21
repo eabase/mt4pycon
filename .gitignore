@@ -16,5 +16,6 @@
 /junk/
 
 # MtAtpi DLL's
-*.dll
+#*.dll
+#/**/*.dll
 
